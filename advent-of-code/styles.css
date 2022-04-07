@@ -1,0 +1,15 @@
+#text {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.correct {
+  color: mediumseagreen;
+}
+
+.wrong {
+  color: crimson;
+}
