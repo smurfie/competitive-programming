@@ -32,4 +32,4 @@ As these things could let the debugger work weird sometimes. If you want to debu
 
 `Utils.debug = true`
 
-Adn the code will run syncronously
+And the code will run syncronously

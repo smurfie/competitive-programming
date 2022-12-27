@@ -2,17 +2,39 @@
   function solve(input) {
     var lines = Utils.read(input);
     var max = 0;
+    var max2 = 0;
+    var max3 = 0;
     var sum = 0;
     for (var line of lines) {
       if (line.length == 0) {
-        max = Math.max(max, sum);
+        if (sum > max3) {
+          max3 = sum;
+          if (sum > max2) {
+            max3 = max2;
+            max2 = sum;
+            if (sum > max) {
+              max2 = max;
+              max = sum;
+            }
+          }
+        }
         sum = 0;
       } else {
         sum += Number(line);
       }
     }
-    max = Math.max(max, sum);
-    return max;
+    if (sum > max3) {
+      max3 = sum;
+      if (sum > max2) {
+        max3 = max2;
+        max2 = sum;
+        if (sum > max) {
+          max2 = max;
+          max = sum;
+        }
+      }
+    }
+    return max + max2 + max3;
   }
 
   var dataset = [];
@@ -32,7 +54,7 @@
 9000
 
 10000`,
-    output: 24000
+    output: 45000
   });
 
   dataset.push({
@@ -2306,8 +2328,8 @@
 2895
 3881
 2464`,
-    output: 69281
+    output: 201524
   });
 
-  Utils.check(solve, dataset, "1a");
+  Utils.check(solve, dataset, "1b");
 })();
