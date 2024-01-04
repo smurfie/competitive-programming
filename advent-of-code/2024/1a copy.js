@@ -1,11 +1,11 @@
 (() => {
   function solve(input) {
-    var lines = Utils.read(input);
+    let lines = Utils.read(input);
 
     return 0;
   }
 
-  var dataset = [];
+  let dataset = [];
 
   dataset.push({
     input: `abcdef`,

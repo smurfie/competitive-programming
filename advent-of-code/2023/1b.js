@@ -2,16 +2,43 @@
   function solve(input) {
     var lines = Utils.read(input);
     var sum = 0;
-    for (let line of lines) {
-      var num = "";
-      var i = 0;
-      while (line[i] < "0" || line[i] > "9") i++;
-      num += line[i];
 
-      i = line.length - 1;
-      while (line[i] < "0" || line[i] > "9") i--;
-      num += line[i];
-      sum += Number(num);
+    for (let line of lines) {
+      var numbers = [
+        ["0", "zero"],
+        ["1", "one"],
+        ["2", "two"],
+        ["3", "three"],
+        ["4", "four"],
+        ["5", "five"],
+        ["6", "six"],
+        ["7", "seven"],
+        ["8", "eight"],
+        ["9", "nine"],
+      ];
+      var minNum = 0;
+      var minPos = line.length;
+      var maxNum = 0;
+      var maxPos = -1;
+      for (let i = 0; i < numbers.length; i++) {
+        for (let j = 0; j < numbers[i].length; j++) {
+          var pos = line.indexOf(numbers[i][j]);
+          if (pos >= 0) {
+            if (pos < minPos) {
+              minPos = pos;
+              minNum = i;
+            }
+          }
+          pos = line.lastIndexOf(numbers[i][j]);
+          if (pos >= 0) {
+            if (pos > maxPos) {
+              maxPos = pos;
+              maxNum = i;
+            }
+          }
+        }
+      }
+      sum += minNum * 10 + maxNum;
     }
 
     return sum;
@@ -20,11 +47,14 @@
   var dataset = [];
 
   dataset.push({
-    input: `1abc2
-pqr3stu8vwx
-a1b2c3d4e5f
-treb7uchet`,
-    output: 142
+    input: `two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen`,
+    output: 281,
   });
 
   dataset.push({
@@ -1028,8 +1058,8 @@ cnktjkjmcg46fiverxlxkmxvkmnklsfive
 sevenfourfour99seven8
 ktgfiveone76ghj
 7zgzsevenftkdfour186`,
-    output: 55621
+    output: 53592,
   });
 
-  Utils.check(solve, dataset, "1a");
+  Utils.check(solve, dataset, "1b");
 })();
