@@ -2,7 +2,7 @@
 
 This repos it is meant to hold solutions for different competitive programming platforms and contests in different languages.
 
-It started only with JS and `Advent of Code` contest and then extended to `Codeforces` also in JS and Kotlin latter
+It started only with JS and `Advent of Code` contest and then extended to `Codeforces` also in JS and Kotlin later
 
 In the root there is a lib folder to be able to store/share some common code between folders
 
