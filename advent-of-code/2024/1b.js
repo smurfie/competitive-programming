@@ -3,20 +3,24 @@
     let lines = Utils.read(input);
 
     let l1 = [];
-    let l2 = [];
+    let l2 = {};
     let sum = 0;
 
     for (let i = 0; i < lines.length; i++) {
       let numbers = lines[i].split("   ");
       l1.push(Number(numbers[0]));
-      l2.push(Number(numbers[1]));
+      let n2 = Number(numbers[1]);
+      if (l2[n2]) {
+        l2[n2]++;
+      } else {
+        l2[n2] = 1;
+      }
     }
 
-    l1.sort((a, b) => a - b);
-    l2.sort((a, b) => a - b);
-
     for (let i = 0; i < l1.length; i++) {
-      sum += Math.abs(l1[i] - l2[i]);
+      if (l2[l1[i]]) {
+        sum += l1[i] * l2[l1[i]];
+      }
     }
 
     return sum;
@@ -31,7 +35,7 @@
 1   3
 3   9
 3   3`,
-    output: 11,
+    output: 31,
   });
 
   dataset.push({
@@ -1035,8 +1039,8 @@
 61245   14960
 74434   46710
 21991   30826`,
-    output: 2264607,
+    output: 19457120,
   });
 
-  Utils.check(solve, dataset, "1a");
+  Utils.check(solve, dataset, "1b");
 })();

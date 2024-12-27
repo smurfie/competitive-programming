@@ -105,6 +105,10 @@ class Utils {
     return res;
   }
 
+  static mod(x, y) {
+    return ((x % y) + y) % y;
+  }
+
   static queue = [];
   static running = false;
   static queueTime = 0;
