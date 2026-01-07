@@ -9,12 +9,12 @@
 
   dataset.push({
     input: `abcdef`,
-    output: 609043
+    output: 609043,
   });
 
   dataset.push({
     input: `pqrstuv`,
-    output: 1048970
+    output: 1048970,
   });
 
   Utils.check(solve, dataset, "1a");

@@ -8,15 +8,23 @@
       let line = lines[i];
       let direction = line[0];
       let distance = parseInt(line.slice(1));
+      if (distance >= 100) {
+        solution += Math.floor(distance / 100);
+        distance %= 100;
+      }
       if (direction === "L") {
-        pos -= distance + 100;
+        if (pos > 0 && pos <= distance) {
+          solution++;
+        }
+        pos -= distance;
+        pos += 100;
       } else {
         pos += distance;
+        if (pos >= 100) {
+          solution++;
+        }
       }
       pos %= 100;
-      if (pos === 0) {
-        solution++;
-      }
     }
     return solution;
   }
@@ -34,7 +42,7 @@ L1
 L99
 R14
 L82`,
-    output: 3,
+    output: 6,
   });
 
   dataset.push({
@@ -4224,8 +4232,8 @@ L12
 L20
 L25
 R16`,
-    output: 1034,
+    output: 6166,
   });
 
-  Utils.check(solve, dataset, "1a");
+  Utils.check(solve, dataset, "1b");
 })();
